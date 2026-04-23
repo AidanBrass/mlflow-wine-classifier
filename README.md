@@ -108,3 +108,15 @@ Go to `http://localhost:8000/docs` for interactive API docs.
 - Building production-grade REST APIs with FastAPI
 - Input validation, error handling, and confidence scoring in ML APIs
 - Version control with Git for ML projects
+
+
+## Docker
+
+Pull and run the image directly from Docker Hub:
+
+```bash
+docker pull YOUR_DOCKERHUB_USERNAME/wine-classifier-api:v1
+docker run -p 8000:8000 YOUR_DOCKERHUB_USERNAME/wine-classifier-api:v1
+```
+
+API will be available at `http://localhost:8000`
