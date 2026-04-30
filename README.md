@@ -120,3 +120,27 @@ docker run -p 8000:8000 YOUR_DOCKERHUB_USERNAME/wine-classifier-api:v1
 ```
 
 API will be available at `http://localhost:8000`
+
+## Monitoring
+
+Prometheus and Grafana are used for real-time API monitoring.
+
+**Run Prometheus:**
+```bash
+docker run -d --name prometheus -p 9090:9090 \
+  -v ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml \
+  prom/prometheus
+```
+
+**Run Grafana:**
+```bash
+docker run -d --name grafana -p 3000:3000 grafana/grafana
+```
+
+- Prometheus UI: `http://localhost:9090`
+- Grafana UI: `http://localhost:3000` (admin/admin)
+- Metrics endpoint: `http://localhost:8000/metrics`
+
+**Dashboard tracks:**
+- Total prediction requests
+- Request latency per endpoint
