@@ -2,10 +2,13 @@ import mlflow.sklearn
 import numpy as np 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
+
 
 model = mlflow.sklearn.load_model("mlruns/1/models/m-0d7d7b2fdc5d4e299d16507499fd9868/artifacts")
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 class WineFeatures(BaseModel):
     alcohol: float
